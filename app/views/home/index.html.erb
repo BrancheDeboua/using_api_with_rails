@@ -11,4 +11,9 @@
   <div>
     Could not find the movie inside the database!
   </div>
+<% elsif @response != 'false' %>
+  <%# Here I'm sure that we've got some response from the api %>
+  <% @response.each do |key, value| %>
+    <div><%= key %>: <%= value %></div>
+  <% end %>
 <% end %>
