@@ -11,11 +11,4 @@ class HomeController < ApplicationController
       @response = JSON.parse(res)
     end
   end
-
-  def query
-    #url = "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDBKEY')}&t=blade"
-    #uri = URI(url)
-    #res = Net::HTTP.get(uri)
-    #response = JSON.parse(res)
-  end
 end
