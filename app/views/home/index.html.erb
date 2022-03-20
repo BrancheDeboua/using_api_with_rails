@@ -1,5 +1,14 @@
-<h1>This is my new app to use an api</h1>
+<h1>Movie search</h1>
 
-<div>
-  Hello world!
-</div>
+<%= form_with method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+<% if @response['Error'] == 'Movie not found!' %>
+  <div>
+    Could not find the movie inside the database!
+  </div>
+<% end %>

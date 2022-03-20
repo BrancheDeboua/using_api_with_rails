@@ -3,12 +3,19 @@ require 'json'
 
 class HomeController < ApplicationController
   def index
-    url = "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDBKEY')}&t=blade"
-    uri = URI(url)
-    res = Net::HTTP.get(uri)
-    @response = JSON.parse(res)
-    p "================================================================"
-    p @response['Error'] == 'Movie not found!'
-    p "================================================================"
+    @response = "false"
+    if params['commit'] == 'Search'
+      url = "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDBKEY')}&t=#{params['query']}"
+      uri = URI(url)
+      res = Net::HTTP.get(uri)
+      @response = JSON.parse(res)
+    end
+  end
+
+  def query
+    #url = "http://www.omdbapi.com/?apikey=#{ENV.fetch('OMDBKEY')}&t=blade"
+    #uri = URI(url)
+    #res = Net::HTTP.get(uri)
+    #response = JSON.parse(res)
   end
 end
